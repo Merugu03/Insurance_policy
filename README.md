@@ -2,7 +2,9 @@
 
 ## Description
 
-on based on th dataset. i created 6 different views considering each information as a different collection in MongoDB. This will help to understand the  policy information based on user, lob and carriers data.
+Based on the dataset. I created 6 different views considering each information as a different collection in MongoDB. This will help to understand the  policy information based on user, lob and carriers data. Additionally there are ywo other views named as Agent and Account Name. Which can help to understand the information better.
+
+The Admin can manage this data and perform CURD operations on it.
 
 ---
 ## Requirements
