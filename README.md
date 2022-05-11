@@ -1,6 +1,8 @@
 # Insurance_policy
 
+## Description
 
+on based on th dataset. i created 6 different views considering each information as a different collection in MongoDB. This will help to understand the  policy information based on user, lob and carriers data.
 
 ---
 ## Requirements
