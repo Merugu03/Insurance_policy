@@ -6,20 +6,12 @@ const upload = require("express-fileupload");
 const route=require("./routes/route")
 
 const agent=require("./routes/agent")
-//const userAccount=require("./routes/userAccount")
 const LOB=require("./routes/LOB")
-// carrier
 const carrier=require("./routes/carrier")
-
 const UserAccount=require("./routes/userAccount")
-
 const policy=require("./routes/policy")
 
-
-
-
 // middleware
-
 app.use(express.static("./public"));
 app.use(express.json());
 app.use(upload());
@@ -30,28 +22,23 @@ const connectDB = require('./db/connect');
 
 // routes
 app.use("/",route)
-//app.use(uploadCsv)
 
 // Agents Route
 app.use("/api/agent",agent)
-
-// User Account Route
-//app.use("/api/userAccount",userAccount)
 
 // LOB
 app.use("/api/LOB",LOB)
 
 // carrier
-// app.use("/api/carrier",carrier)
 app.use("/api/carrier",carrier)
+
 // UserAccount
 app.use("/api/UserAccount",UserAccount)
-/// user
 
+// user
 app.use("/api/user",require("./routes/user"))
 
 // policy
-
 app.use("/api/policy",policy)
 
 

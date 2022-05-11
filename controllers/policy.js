@@ -3,7 +3,8 @@ const { StatusCodes } = require('http-status-codes');
 const Policy=require("../models/policy")
 const LOB=require("../models/LOB")
 const Carrier=require("../models/carrier")
-const User=require("../models/user")
+const User=require("../models/user");
+const carrier = require('../models/carrier');
 
 const ObjectId = require('mongodb').ObjectID;
 
@@ -34,14 +35,12 @@ const getPolicy=async(req,res)=>{
 }
 
 const createPolicy=async (req,res)=>{
-  // req.body.policy_start_date=
-  // req.body.policy_end_date=
 
   const LOB_p=await LOB.findOne({category_name:req.body.policy_category})
   const User_p= await User.findOne({firstname:req.body.user})
   const carrier_p=await Carrier.findOne({company_name:req.body.company_name})
 
-  console.log(LOB_p["_id"])
+  console.log(LOB_p["_id"],)
   console.log(User_p["_id"])
   console.log(carrier_p["_id"])
 
@@ -82,6 +81,16 @@ const updatePolicy=async(req,res)=>{
     }
     if(req.body.policy_start_date){
       req.body.policy_start_date=new Date(req.body.policy_start_date)
+    }
+    if(req.body.policy_category_name){
+      req.body.policy_category_id=await LOB.findOne({category_name:req.body.policy_category_name}).select("_id")
+    }
+    if(req.body.company_name){
+      req.body.company_name_id=await carrier.findOne({company_name:req.body.company_name}).select("_id")
+    }
+    if(req.body.user){
+
+      req.body.user_id=await User.findOne({firstname:req.body.user}).select("_id")
     }
   const policy= await Policy.findOneAndUpdate({policy_number:req.body.policy_number},req.body)
   res.status(StatusCodes.OK).send(policy)
